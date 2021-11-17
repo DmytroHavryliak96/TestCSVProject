@@ -7,7 +7,7 @@ using TestCsvProject.Models;
 
 namespace TestCsvProject.DAO.Interfaces
 {
-    public interface IIUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<ApplicationUser> Users { get; }
         IRepository<CsvUserDataModel> UserDataModels { get; }

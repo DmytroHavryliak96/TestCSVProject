@@ -24,6 +24,21 @@ namespace TestCsvProject.DAO.Repositories
             db.CsvUserDataModels.Add(item);
         }
 
+        public void Create(CsvUserDataModel entity, string currentUserId)
+        {
+            if (currentUserId == null)
+            {
+                entity.User = null;
+            }
+            else
+            {
+
+                entity.User = db.Users.Find(currentUserId);
+            }
+            
+            db.CsvUserDataModels.Add(entity);
+        }
+
         public void Delete(int id)
         {
             var model = db.CsvUserDataModels.Find(id);

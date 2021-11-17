@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "LoadFile";
+}
+
+<h2>LoadFile</h2>
+
+<h3>Виберіть CSV файл для завантаження</h3>
+@using (Html.BeginForm("LoadFile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <br>
+    <input type="submit" value="Завантажити" />
+}

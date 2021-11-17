@@ -15,7 +15,7 @@ namespace TestCsvProject.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "CSV parsing application.";
 
             return View();
         }
