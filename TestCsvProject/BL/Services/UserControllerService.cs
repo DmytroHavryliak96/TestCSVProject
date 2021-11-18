@@ -15,9 +15,9 @@ namespace TestCsvProject.BL.Services
     public class UserControllerService : IUserController
     {
         private IUnitOfWork database;
-        IParseCsvFile<CsvUserDataViewModel> parser;
+        IParseCsvFile<CSVModel> parser;
 
-        public UserControllerService(IUnitOfWork db, IParseCsvFile<CsvUserDataViewModel> parser)
+        public UserControllerService(IUnitOfWork db, IParseCsvFile<CSVModel> parser)
         {
             database = db;
             this.parser = parser;

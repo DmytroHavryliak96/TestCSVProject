@@ -23,7 +23,7 @@ namespace TestCsvProject.Util
         public override void Load()
         {
             Bind<IUnitOfWork>().To<EFUnitOfWork>().WithConstructorArgument(connectionString);
-            Bind<IParseCsvFile<CsvUserDataViewModel>>().To<CsvParser<CsvUserDataViewModel>>();
+            Bind<IParseCsvFile<CSVModel>>().To<CsvParser<CSVModel>>();
             Bind<IUserController>().To<UserControllerService>();
         }
     }

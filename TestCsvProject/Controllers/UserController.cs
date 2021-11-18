@@ -10,6 +10,7 @@ using TestCsvProject.ViewModels;
 
 namespace TestCsvProject.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private IUserController _contrl;
@@ -68,6 +69,13 @@ namespace TestCsvProject.Controllers
                 // there is something wrong with the data values
                 return View(record);
             }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteData(int id)
+        {
+            _contrl.DeleteRecord(id);
+            return RedirectToAction("ManageData");
         }
     }
 }
