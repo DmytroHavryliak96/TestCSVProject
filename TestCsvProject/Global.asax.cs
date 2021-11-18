@@ -23,6 +23,7 @@ namespace TestCsvProject
 
             NinjectModule module = new TestCSVProjectModule("DefaultConnection");
             var kernel = new StandardKernel(module);
+            kernel.Unbind<ModelValidatorProvider>();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

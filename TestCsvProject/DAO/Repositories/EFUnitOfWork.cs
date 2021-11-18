@@ -61,7 +61,7 @@ namespace TestCsvProject.DAO.Repositories
 
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
 
         private bool disposed = false;

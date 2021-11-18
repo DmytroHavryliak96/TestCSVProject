@@ -18,7 +18,7 @@ namespace TestCsvProject.BL.Services
             using (var reader = new StreamReader(file.InputStream))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                records = csv.GetRecords<T>();
+                records = csv.GetRecords<T>().ToList();
             }
 
             return records;

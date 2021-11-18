@@ -23,7 +23,29 @@ namespace TestCsvProject.BL.Services
             this.parser = parser;
 
         }
-        
+
+        public IEnumerable<CsvUserDataViewModel> GetAllDataForUser(string userId)
+        {
+
+            var result = new List<CsvUserDataViewModel>();
+
+            var records = database.UserDataModels.Find(record => record.User.Id.Equals(userId)).ToList();
+
+            for(int i = 0; i < records.Count(); i++)
+            {
+                result.Add(new CsvUserDataViewModel
+                {
+                    Name = records[i].Name,
+                    DateOfBirth = records[i].DateOfBirth,
+                    Married = records[i].Married,
+                    Phone = records[i].Phone,
+                    Salary = records[i].Salary,
+                    Id = records[i].Id
+                });
+            }
+            return result;
+        }
+
         public void SaveData(HttpPostedFileBase file, string userId)
         {
             var rep = (ApplicationUserRepository)database.Users;

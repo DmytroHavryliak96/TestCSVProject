@@ -39,5 +39,18 @@ namespace TestCsvProject.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult ManageData()
+        {
+            return View(_contrl.GetAllDataForUser(User.Identity.GetUserId()));
+        }
+
+       /* [HttpGet]
+        public ViewResult EditData(int id)
+        {
+            var user = adminService.GetUser(userId);
+            return View(user);
+        }*/
     }
 }

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TestCsvProject.ViewModels.CsvUserDataViewModel>
+@{
+    ViewBag.Title = "ManageData";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>Data Manipulations</h2>
+<div class="row">
+    <div class="col s8 offset-s2">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DateOfBirth</th>
+                    <th>Married</th>
+                    <th class="NumericCol">Phone</th>
+                    <th class="NumericCol">Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "EditData", new { itemId = item.Id })</td>
+                    <td>@item.DateOfBirth</td>
+                    <td>@item.Married</td>
+                    <td class="NumericCol">@item.Phone</td>
+                    <td class="NumericCol">@item.Salary</td>
+                    <td>
+                        @using (Html.BeginForm("DeleteData", "User"))
+                        {
+                            @Html.Hidden("ItemId", item.Id)
+                            <input type="submit" value="Delete" class="waves-effect waves-light btn" />
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

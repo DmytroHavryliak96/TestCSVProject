@@ -1,7 +1,18 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-<h2>Index</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <hr />
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                <li>@Html.ActionLink("Manage your data", "ManageData", "User")</li>
+                <li>@Html.ActionLink("Load data from csv file", "LoadData", "User")</li>
+
+            </ul>
+            
+        </div>
+    </div>
+
 
