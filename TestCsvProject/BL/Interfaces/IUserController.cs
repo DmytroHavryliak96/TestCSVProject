@@ -14,5 +14,11 @@ namespace TestCsvProject.BL.Interfaces
         void SaveData(HttpPostedFileBase file, string userId);
 
         IEnumerable<CsvUserDataViewModel> GetAllDataForUser(string userId);
+
+        CsvUserDataViewModel GetCsvUserDataItem(int id);
+
+        void UpdateRecord(CsvUserDataViewModel record, string userId);
+
+        void DeleteRecord(int id);
     }
 }

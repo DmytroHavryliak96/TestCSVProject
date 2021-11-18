@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TestCsvProject.BL.Interfaces;
 using TestCsvProject.BL.Services;
+using TestCsvProject.ViewModels;
 
 namespace TestCsvProject.Controllers
 {
@@ -43,14 +44,30 @@ namespace TestCsvProject.Controllers
         [HttpGet]
         public ActionResult ManageData()
         {
-            return View(_contrl.GetAllDataForUser(User.Identity.GetUserId()));
+            var result = _contrl.GetAllDataForUser(User.Identity.GetUserId());
+            return View(result);
         }
 
-       /* [HttpGet]
+        [HttpGet]
         public ViewResult EditData(int id)
         {
-            var user = adminService.GetUser(userId);
-            return View(user);
-        }*/
+            var item = _contrl.GetCsvUserDataItem(id);
+            return View(item);
+        }
+
+        [HttpPost]
+        public ActionResult EditData(CsvUserDataViewModel record)
+        {
+            if (ModelState.IsValid)
+            {
+                _contrl.UpdateRecord(record, User.Identity.GetUserId());
+                return RedirectToAction("ManageData");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View(record);
+            }
+        }
     }
 }

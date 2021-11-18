@@ -1,0 +1,19 @@
+﻿@model TestCsvProject.ViewModels.CsvUserDataViewModel
+@{
+    ViewBag.Title = "EditData";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h3 class="center">Edit Data @Model.Name</h3>
+
+<div class="row">
+    <div class="col s6 offset-s3">
+        @using (Html.BeginForm("EditData", "User"))
+        {
+            @Html.EditorForModel();
+            <input type="submit" value="Save changes" class="waves-effect waves-light btn">
+        }
+
+    </div>
+</div>
+

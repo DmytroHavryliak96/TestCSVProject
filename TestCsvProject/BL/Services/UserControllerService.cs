@@ -24,6 +24,12 @@ namespace TestCsvProject.BL.Services
 
         }
 
+        public void DeleteRecord(int id)
+        {
+            database.UserDataModels.Delete(id);
+            database.Save();
+        }
+
         public IEnumerable<CsvUserDataViewModel> GetAllDataForUser(string userId)
         {
 
@@ -43,6 +49,21 @@ namespace TestCsvProject.BL.Services
                     Id = records[i].Id
                 });
             }
+            return result;
+        }
+
+        public CsvUserDataViewModel GetCsvUserDataItem(int id)
+        {
+            var record = database.UserDataModels.Get(id);
+            var result = new CsvUserDataViewModel
+            {
+                Name = record.Name,
+                DateOfBirth = record.DateOfBirth,
+                Married = record.Married,
+                Phone = record.Phone,
+                Salary = record.Salary,
+                Id = record.Id
+            };
             return result;
         }
 
@@ -68,6 +89,25 @@ namespace TestCsvProject.BL.Services
 
             database.Save();
 
+        }
+
+        public void UpdateRecord(CsvUserDataViewModel record, string userId)
+        {
+            var rep = (ApplicationUserRepository)database.Users;
+
+            var result = new CsvUserDataModel
+            {
+                Id = record.Id,
+                Name = record.Name,
+                DateOfBirth = record.DateOfBirth,
+                Married = record.Married,
+                Phone = record.Phone,
+                Salary = record.Salary,
+                User = rep.Get(userId)
+            };
+
+            database.UserDataModels.Update(result);
+            database.Save();
         }
     }
 }

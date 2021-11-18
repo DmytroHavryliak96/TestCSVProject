@@ -303,6 +303,7 @@
     <Content Include="Views\Shared\UserLayout.cshtml" />
     <Content Include="Views\User\LoadFile.cshtml" />
     <Content Include="Views\User\ManageData.cshtml" />
+    <Content Include="Views\User\EditData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,7 +21,7 @@
                 @foreach (var item in Model)
                 {
                 <tr>
-                    <td>@Html.ActionLink(item.Name, "EditData", new { itemId = item.Id })</td>
+                    <td>@Html.ActionLink(item.Name, "EditData", new { id = item.Id })</td>
                     <td>@item.DateOfBirth</td>
                     <td>@item.Married</td>
                     <td class="NumericCol">@item.Phone</td>
